@@ -1,0 +1,20 @@
+<%- include ('../partials/header') %> <%- include ('../partials/menu') %>
+<main>
+  <div class="container">
+    <form action="/login" method="POST">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email adress</label>
+            <input class="form-control" type="text" id="email" name="email" aria-describedby="emailHelp"/>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else</div>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="username" id="username" class="form-control" name="username"/>
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</main>
+
+<%- include ('../partials/footer') %>

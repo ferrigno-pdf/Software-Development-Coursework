@@ -1,0 +1,35 @@
+<%- include ('../partials/header') %> <%- include ('../partials/menu') %>
+
+<main>
+  <div class="container">
+    <h1 style="font-family: Apercu"><centre>Welcome User : <%= username %></centre></h1>
+    <table class="table table-striped">
+      <tr>
+        <th>FIRST NAME</th>
+        <td style="font-family: Apercu"><%= first_name %></td>
+      </tr>
+      <tr>
+        <th>LAST NAME</th>
+        <td style="font-family: Apercu"><%= last_name %></td>
+      </tr>
+      <tr>
+        <th>EMAIL NAME</th>
+        <td style="font-family: Apercu"><%= email %></td>
+      </tr>
+      <tr>
+        <th>YEAR</th>
+        <td style="font-family: Apercu"><%= year %></td>
+      </tr>
+      <tr>
+        <th>MAJOR</th>
+        <td style="font-family: Apercu"><%= major %></td>
+      </tr>
+      <tr>
+        <th>DEGREE</th>
+        <td style="font-family: Apercu"><%= degree %></td>
+      </tr>
+    </table>
+  </div>
+</main>
+
+<%- include ('../partials/footer') %>

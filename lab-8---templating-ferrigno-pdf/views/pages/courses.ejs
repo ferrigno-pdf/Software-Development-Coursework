@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+<%- include('../partials/menu') %>
+
+<main>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Credit Hours</th>
+            </tr>
+            </thead>
+            <tbody>
+              <% courses.forEach(function(courses) { %>
+                <tr>
+                  <td><%= courses.course_id %></td>
+                  <td><%= courses.course_name %></td>
+                  <td><%= courses.credit_hours %></td>
+                <% if(locals.action == 'delete' && courses.taken == true) { %>
+                    <td>
+                      <form action="/courses/delete" method="POST">
+                        <input type="hidden" name="course_id" value="<%= courses.course_id %>">
+                        <button type="submit" class="btn btn-outline-danger">DELETE</button>
+                      </form>
+                    </td>
+                <% } else { %>
+                    <td>
+                      <form action="/courses/add" method="POST">
+                        <input type="hidden" name="course_id" value="<%= courses.course_id %>">
+                      <% if (courses.taken) { %>
+                        <button type="submit" class="btn btn-secondary" id="submit_btn" disabled>ADD</button>
+                      <% } else { %>
+                        <button type="submit" class="btn btn-outline-success" id="submit_btn">ADD</button>
+                        <% } %>
+                      </form>
+                    </td>
+                  </tr>
+                  <% } %>
+            <% }) %>
+            </tbody>
+            <% if (locals.message) { %>
+                <div class="alert alert-<%- locals.error ? 'danger' : 'success' %>"role="alert">
+                    <%- locals.message %>
+                </div>
+            <% } %>
+        </table>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>
