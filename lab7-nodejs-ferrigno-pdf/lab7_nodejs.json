@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "eb602aae-b795-4ed3-9cfd-b569805ebf27",
+		"name": "lab7_nodejs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26254515"
+	},
+	"item": [
+		{
+			"name": "top3CaliTrails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"swsr\",\n    \"name\" : \"Swaminathan\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/getTop3ByRatingCali",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getTop3ByRatingCali"
+					]
+				}
+			},
+			"response": [
+				{
+					"trails": [
+						{
+							"trail_id": 20,
+							"name": "Roxbury",
+							"location": "California",
+							"length": "6.6",
+							"elevation_gain": 2224,
+							"difficulty": "easy",
+							"avg_rating": "8.15"
+						},
+						{
+							"trail_id": 11,
+							"name": "Reinke",
+							"location": "California",
+							"length": "4.6",
+							"elevation_gain": 2844,
+							"difficulty": "difficult",
+							"avg_rating": "7.68"
+						},
+						{
+							"trail_id": 1,
+							"name": "Norway Maple",
+							"location": "California",
+							"length": "5.5",
+							"elevation_gain": 6057,
+							"difficulty": "very_difficult",
+							"avg_rating": "7.23"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "update_review_or_image",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"review\" : \"Did like\",\n    \"review_id\": 85,\n    \"rating\" : 5.8,\n    \"image_id\" : 58,\n    \"image_url\" : \"OMG OMG OMG\",\n    \"image_caption\" : \"La sierrita\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/update_review_or_image",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"update_review_or_image"
+					]
+				}
+			},
+			"response": [
+				{
+					"status": "success",
+					"message": "data updated successfully",
+					"new_review": [
+						{
+							"review_id": 85,
+							"username": "Hola",
+							"review": "Did like",
+							"rating": "5.8"
+						}
+					],
+					"new_image": [
+						{
+							"image_id": 58,
+							"image_url": "OMG OMG OMG",
+							"image_caption": "La sierrita"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "post_review",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"username\" : \"gerardo\",\n\"review\" : \"Liked the trail\",\n\"rating\" : 8.7,\n\"image_url\" : \"https:/abc.com\",\n\"image_caption\" : \"Nice trail\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/add_review",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"add_review"
+					]
+				}
+			},
+			"response": [
+				{
+					"status": "sucess",
+					"message": "data added successfully",
+					"image_id": 65,
+					"review_id": 189
+				}
+			]
+		},
+		{
+			"name": "delete_review",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"rating\" : 1.87,\n\"username\": \"ochellg\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/delete_review",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"delete_review"
+					]
+				}
+			},
+			"response": [
+				{
+					"status": "success",
+					"message": "Data deleted successfully"
+				}
+			]
+		},
+		{
+			"name": "getTrails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/getTrails/?difficulty=easy&avg_rating=7.23&location=Illinois&elevation_gain=5029",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getTrails",
+						""
+					],
+					"query": [
+						{
+							"key": "difficulty",
+							"value": "easy"
+						},
+						{
+							"key": "avg_rating",
+							"value": "7.23"
+						},
+						{
+							"key": "location",
+							"value": "Illinois"
+						},
+						{
+							"key": "elevation_gain",
+							"value": "5029"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"trails": [
+						[
+							{
+								"trail_id": 5,
+								"name": "Hovde",
+								"location": "North Carolina",
+								"length": "7.9",
+								"elevation_gain": 3365,
+								"difficulty": "easy",
+								"avg_rating": "9.63"
+							},
+							{
+								"trail_id": 8,
+								"name": "Bay",
+								"location": "Mississippi",
+								"length": "3.3",
+								"elevation_gain": 6214,
+								"difficulty": "easy",
+								"avg_rating": "2.77"
+							},
+							{
+								"trail_id": 16,
+								"name": "Maryland",
+								"location": "California",
+								"length": "5.7",
+								"elevation_gain": 5630,
+								"difficulty": "easy",
+								"avg_rating": "2.51"
+							},
+							{
+								"trail_id": 20,
+								"name": "Roxbury",
+								"location": "California",
+								"length": "6.6",
+								"elevation_gain": 2224,
+								"difficulty": "easy",
+								"avg_rating": "8.15"
+							}
+						],
+						[
+							{
+								"trail_id": 1,
+								"name": "Norway Maple",
+								"location": "California",
+								"length": "5.5",
+								"elevation_gain": 6057,
+								"difficulty": "very_difficult",
+								"avg_rating": "7.23"
+							}
+						],
+						[
+							{
+								"trail_id": 6,
+								"name": "Michigan",
+								"location": "Illinois",
+								"length": "3.1",
+								"elevation_gain": 5266,
+								"difficulty": "very_difficult",
+								"avg_rating": "6.71"
+							}
+						],
+						[
+							{
+								"trail_id": 7,
+								"name": "Londonderry",
+								"location": "New York",
+								"length": "4.3",
+								"elevation_gain": 5029,
+								"difficulty": "difficult",
+								"avg_rating": "2.31"
+							}
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "getUserInfo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/getUserInfo/?username=hhawksley0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getUserInfo",
+						""
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "hhawksley0"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"current_user": [
+						{
+							"user_id": 1,
+							"name": "Harwilll",
+							"username": "hhawksley0",
+							"email": "hsiemianowicz0@blogspot.com",
+							"city": "Eskilstuna"
+						}
+					],
+					"city_users": []
+				}
+			]
+		},
+		{
+			"name": "getTrailId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/getTrailId?trail_id=13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getTrailId"
+					],
+					"query": [
+						{
+							"key": "trail_id",
+							"value": "13"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"reviews": [
+						{
+							"review": "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem."
+						},
+						{
+							"review": "Maecenas pulvinar lobortis est. Phasellus sit amet erat."
+						}
+					]
+				}
+			]
+		}
+	]
+}
