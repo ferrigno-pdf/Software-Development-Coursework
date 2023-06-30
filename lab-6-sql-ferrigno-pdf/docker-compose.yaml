@@ -1,0 +1,36 @@
+# ------------------------------------------------------------------------------
+# More resources related to this file:
+# [1] Overview   | https://docs.docker.com/compose/
+# [2] PostgreSQL | https://github.com/docker-library/docs/tree/master/postgres
+# -------------
+#  More resources for your projects:
+# [4] Samples    | https://github.com/docker/awesome-compose
+# [5] Env Vars   | https://docs.docker.com/compose/environment-variables/
+# [6] Secrets    | https://docs.docker.com/engine/swarm/secrets/#use-secrets-in-compose
+# ------------------------------------------------------------------------------
+version: '3.9'
+# This section defines all of our components as "services", each which is
+# itself a docker image [1].
+services:
+  # This section defines our PostgreSQL database [2].
+  # Note that the name `db` also becomes the hostname of the postgres container
+  db:
+    image: 'postgres:${POSTGRES_VERSION:-12}'
+    # Environment variables to setup postgres are stored in a .env file. For
+    # this lab we are making this in your repo, please note that this is not
+    # secure, and in production (or your project), you should not commit this
+    # file to GitHub.
+    env_file: .env
+    expose:
+      - '5432'
+    volumes:
+      - lab-06-sql:/var/lib/postgresql/data # Binds the docker managed volume
+        # to persist your data.
+      - ./init_data:/app
+
+# This defines our volume(s), which will persist throughout startups.
+# If you want to get rid of a hanging volume, e.g. to test your database init,
+# run `docker-compose rm -v`. Note that this will remove ALL of your data, so
+# be extra sure you've made a stable backup somewhere.
+volumes:
+  lab-06-sql: {}
